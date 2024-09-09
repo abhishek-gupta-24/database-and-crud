@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>all users</title>
+</head>
+<body>
+    <table border="black">
+        <tr>
+            <th>user_id</th>
+            <th>user_name</th>
+            <th>user_email</th>
+            <th>edit_username</th>
+        </tr>
+
+        <%for(user of result){%>
+            <tr>
+                <td><%=user.id%></td>
+                <td><%=user.username%></td>
+                <td><%=user.email%></td>
+                <td>
+                    <form method="get" action="/user/<%=user.id%>/edit" >
+                        <button>edit username</button>
+                    </form>
+                </td>
+            </tr>
+        <%}%>
+    </table>
+</body>
+</html>
