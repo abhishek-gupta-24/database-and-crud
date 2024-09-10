@@ -124,6 +124,23 @@ app.patch("/user/:id",(req,res)=>{
   } 
 });
 
+app.get("/user/add",(req,res)=>{
+  res.render("add.ejs");
+});
+
+app.post("/user/add",(req,res)=>{
+  let {id,username,email,password}=req.body;
+  let newuser=[id,username,email,password];
+  let q="INSERT INTO user (id,username,email,password) VALUES (?,?,?,?)";
+    connection.query(q,newuser,(err,result)=>{
+      if(err) { 
+        return res.send("user already exist");
+      }
+       res.redirect("/user")
+    });
+
+});
+
 
 
 
